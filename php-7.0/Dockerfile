@@ -2,7 +2,7 @@ FROM jenkinsci/slave
 USER root
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -yqqm \
     curl \
     wget \
     apt-transport-https \
@@ -12,8 +12,8 @@ RUN apt-get update && \
 RUN wget -O- https://packages.sury.org/php/apt.gpg | apt-key add - && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 RUN \
-  apt-get update && \
-  apt-get install -y \
+  apt-get update -yqq && \
+  apt-get install -yqqm \
   vim \
   locales \
   php7.0-fpm \
