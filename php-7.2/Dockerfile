@@ -35,9 +35,7 @@ RUN \
   php7.2-sybase \
   php7.2-sqlite3 \
   php7.2-bz2 \
-  php7.2-mcrypt \
   php7.2-common \
-  php7.2-apcu-bc \
   php7.2-memcached \
   php7.2-redis \
   php7.2-xml \

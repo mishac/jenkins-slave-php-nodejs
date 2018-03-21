@@ -35,9 +35,7 @@ RUN \
   php%%PHP_VERSION%%-sybase \
   php%%PHP_VERSION%%-sqlite3 \
   php%%PHP_VERSION%%-bz2 \
-  php%%PHP_VERSION%%-mcrypt \
   php%%PHP_VERSION%%-common \
-  php%%PHP_VERSION%%-apcu-bc \
   php%%PHP_VERSION%%-memcached \
   php%%PHP_VERSION%%-redis \
   php%%PHP_VERSION%%-xml \

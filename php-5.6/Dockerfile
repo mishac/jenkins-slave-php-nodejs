@@ -35,9 +35,7 @@ RUN \
   php5.6-sybase \
   php5.6-sqlite3 \
   php5.6-bz2 \
-  php5.6-mcrypt \
   php5.6-common \
-  php5.6-apcu-bc \
   php5.6-memcached \
   php5.6-redis \
   php5.6-xml \
