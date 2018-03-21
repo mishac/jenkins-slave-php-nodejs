@@ -65,4 +65,5 @@ RUN composer global require \
     pdepend/pdepend \
     phpmd/phpmd \
     sebastian/phpcpd \
+    phing/phing \
     --no-progress --no-scripts --no-interaction
