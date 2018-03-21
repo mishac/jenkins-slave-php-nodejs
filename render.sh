@@ -10,6 +10,6 @@ sed -r "$sedStr" $1
 
 versions=(5.6 7.0 7.1 7.2)
 for version in ${versions[*]}; do
-  mkdir php-$version
+  mkdir -p php-$version
   render Dockerfile.template > php-$version/Dockerfile
 done
