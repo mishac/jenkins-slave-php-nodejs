@@ -53,6 +53,8 @@ RUN curl -sS https://deb.nodesource.com/setup_9.x | bash - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -yqq && apt-get install nodejs yarn -yqq
 
+RUN chown -R jenkins:jenkins /home/jenkins/.composer
+
 USER jenkins
 
 ENV PATH /home/jenkins/.composer/vendor/bin:$PATH
