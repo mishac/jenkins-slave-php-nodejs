@@ -59,11 +59,12 @@ ENV PATH /home/jenkins/.composer/vendor/bin:$PATH
 
 RUN composer global require \
     phpunit/phpunit \
-    drupal/coder \
-    dealerdirect/phpcodesniffer-composer-installer \
     phploc/phploc \
     pdepend/pdepend \
     phpmd/phpmd \
     sebastian/phpcpd \
     phing/phing \
+    drupal/coder \
     --no-progress --no-scripts --no-interaction
+
+RUN composer global require dealerdirect/phpcodesniffer-composer-installer --no-progress --no-interaction
