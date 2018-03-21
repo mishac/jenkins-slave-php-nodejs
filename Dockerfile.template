@@ -1,0 +1,70 @@
+FROM jenkinsci/slave
+USER root
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    wget \
+    apt-transport-https \
+    lsb-release \
+    ca-certificates \
+    git
+RUN wget -O- https://packages.sury.org/php/apt.gpg | apt-key add - && \
+    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+RUN \
+  apt-get update && \
+  apt-get install -y \
+  vim \
+  locales \
+  php%%PHP_VERSION%%-fpm \
+  php%%PHP_VERSION%%-mysql \
+  php%%PHP_VERSION%%-gd \
+  php%%PHP_VERSION%%-imagick \
+  php%%PHP_VERSION%%-dev \
+  php%%PHP_VERSION%%-curl \
+  php%%PHP_VERSION%%-opcache \
+  php%%PHP_VERSION%%-cli \
+  php%%PHP_VERSION%%-sqlite \
+  php%%PHP_VERSION%%-intl \
+  php%%PHP_VERSION%%-tidy \
+  php%%PHP_VERSION%%-imap \
+  php%%PHP_VERSION%%-json \
+  php%%PHP_VERSION%%-pspell \
+  php%%PHP_VERSION%%-recode \
+  php%%PHP_VERSION%%-common \
+  php%%PHP_VERSION%%-sybase \
+  php%%PHP_VERSION%%-sqlite3 \
+  php%%PHP_VERSION%%-bz2 \
+  php%%PHP_VERSION%%-mcrypt \
+  php%%PHP_VERSION%%-common \
+  php%%PHP_VERSION%%-apcu-bc \
+  php%%PHP_VERSION%%-memcached \
+  php%%PHP_VERSION%%-redis \
+  php%%PHP_VERSION%%-xml \
+  php%%PHP_VERSION%%-shmop \
+  php%%PHP_VERSION%%-mbstring \
+  php%%PHP_VERSION%%-zip \
+  php%%PHP_VERSION%%-soap
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN curl -sS https://deb.nodesource.com/setup_9.x | bash - \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update -yqq && apt-get install nodejs yarn -yqq
+
+RUN chown -R jenkins:jenkins /home/jenkins/.composer
+
+USER jenkins
+
+ENV PATH /home/jenkins/.composer/vendor/bin:$PATH
+
+RUN composer global require \
+    phpunit/phpunit \
+    drupal/coder \
+    dealerdirect/phpcodesniffer-composer-installer \
+    phploc/phploc \
+    pdepend/pdepend \
+    phpmd/phpmd \
+    sebastian/phpcpd \
+    --no-progress --no-scripts --no-interaction
