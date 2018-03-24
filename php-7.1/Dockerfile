@@ -77,6 +77,10 @@ RUN composer global require \
     phpmd/phpmd \
     sebastian/phpcpd \
     phing/phing \
-    squizlabs/PHP_CodeSniffer \
-    jakub-onderka/php-parallel-lint
-    --no-progress --no-scripts --no-interaction
+    jakub-onderka/php-parallel-lint \
+    drupal/coder \
+    --no-progress --no-interaction
+
+RUN composer global require \
+    dealerdirect/phpcodesniffer-composer-installer \
+    --no-progress --no-interaction
