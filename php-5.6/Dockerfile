@@ -62,6 +62,10 @@ RUN apt-get update -yqq && apt-get install nodejs yarn -yqq
 
 RUN chown -R jenkins:jenkins /home/jenkins/.composer
 
+RUN wget http://phpdox.de/releases/phpdox.phar \
+    && chmod +x phpdox.phar \
+    && mv phpdox.phar /usr/local/bin/phpdox
+
 USER jenkins
 
 ENV PATH /home/jenkins/.composer/vendor/bin:$PATH
