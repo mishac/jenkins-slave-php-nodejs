@@ -79,6 +79,7 @@ RUN composer global require \
     phing/phing \
     jakub-onderka/php-parallel-lint \
     drupal/coder \
+    drush/drush \
     --no-progress --no-interaction
 
 RUN composer global require \
