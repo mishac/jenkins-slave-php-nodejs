@@ -78,4 +78,5 @@ RUN composer global require \
     sebastian/phpcpd \
     phing/phing \
     squizlabs/PHP_CodeSniffer \
+    jakub-onderka/php-parallel-lint
     --no-progress --no-scripts --no-interaction
