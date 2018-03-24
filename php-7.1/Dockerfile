@@ -1,6 +1,15 @@
 FROM jenkinsci/slave
+
+ARG uid=1000
+ARG gid=1000
+
 USER root
+
 ENV DEBIAN_FRONTEND noninteractive
+
+RUN groupmod -g ${gid} jenkins
+RUN usermod -u ${uid} -g ${gid} jenkins
+
 RUN apt-get update && \
     apt-get install -yqqm \
     curl \
