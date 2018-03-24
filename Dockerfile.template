@@ -64,7 +64,5 @@ RUN composer global require \
     phpmd/phpmd \
     sebastian/phpcpd \
     phing/phing \
-    drupal/coder \
+    squizlabs/PHP_CodeSniffer \
     --no-progress --no-scripts --no-interaction
-
-RUN composer global require dealerdirect/phpcodesniffer-composer-installer --no-progress --no-interaction
