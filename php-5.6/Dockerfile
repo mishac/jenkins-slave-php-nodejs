@@ -81,7 +81,6 @@ RUN composer global require \
     jakub-onderka/php-parallel-lint \
     drupal/coder \
     drush/drush \
+    wp-cli/wp-cli \
     --no-progress --no-interaction \
-    && composer global require \
-    dealerdirect/phpcodesniffer-composer-installer \
-    --no-progress --no-interaction
+    && composer global require dealerdirect/phpcodesniffer-composer-installer --no-progress --no-interaction
