@@ -51,6 +51,7 @@ RUN apt-get update -yqq \
     php5.6-mbstring \
     php5.6-zip \
     php5.6-soap \
+    php5.6-xml \
     php-xdebug \
     && phpenmod xdebug
 

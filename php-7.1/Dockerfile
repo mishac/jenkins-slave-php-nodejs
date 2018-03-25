@@ -51,6 +51,7 @@ RUN apt-get update -yqq \
     php7.1-mbstring \
     php7.1-zip \
     php7.1-soap \
+    php7.1-xml \
     php-xdebug \
     && phpenmod xdebug
 
