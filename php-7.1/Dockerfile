@@ -18,40 +18,41 @@ RUN apt-get update && \
     lsb-release \
     ca-certificates \
     git
-RUN wget -O- https://packages.sury.org/php/apt.gpg | apt-key add - && \
-    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
-RUN \
-  apt-get update -yqq && \
-  apt-get install -yqqm \
-  vim \
-  locales \
-  php7.1-fpm \
-  php7.1-mysql \
-  php7.1-gd \
-  php7.1-imagick \
-  php7.1-dev \
-  php7.1-curl \
-  php7.1-opcache \
-  php7.1-cli \
-  php7.1-sqlite \
-  php7.1-intl \
-  php7.1-tidy \
-  php7.1-imap \
-  php7.1-json \
-  php7.1-pspell \
-  php7.1-recode \
-  php7.1-common \
-  php7.1-sybase \
-  php7.1-sqlite3 \
-  php7.1-bz2 \
-  php7.1-common \
-  php7.1-memcached \
-  php7.1-redis \
-  php7.1-xml \
-  php7.1-shmop \
-  php7.1-mbstring \
-  php7.1-zip \
-  php7.1-soap
+RUN wget -O- https://packages.sury.org/php/apt.gpg | apt-key add - \
+    && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+RUN apt-get update -yqq \
+    && apt-get install -yqqm \
+    vim \
+    locales \
+    php7.1-fpm \
+    php7.1-mysql \
+    php7.1-gd \
+    php7.1-imagick \
+    php7.1-dev \
+    php7.1-curl \
+    php7.1-opcache \
+    php7.1-cli \
+    php7.1-sqlite \
+    php7.1-intl \
+    php7.1-tidy \
+    php7.1-imap \
+    php7.1-json \
+    php7.1-pspell \
+    php7.1-recode \
+    php7.1-common \
+    php7.1-sybase \
+    php7.1-sqlite3 \
+    php7.1-bz2 \
+    php7.1-common \
+    php7.1-memcached \
+    php7.1-redis \
+    php7.1-xml \
+    php7.1-shmop \
+    php7.1-mbstring \
+    php7.1-zip \
+    php7.1-soap \
+    php-xdebug \
+    && phpenmod xdebug
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
@@ -80,8 +81,7 @@ RUN composer global require \
     jakub-onderka/php-parallel-lint \
     drupal/coder \
     drush/drush \
-    --no-progress --no-interaction
-
-RUN composer global require \
+    --no-progress --no-interaction \
+    && composer global require \
     dealerdirect/phpcodesniffer-composer-installer \
     --no-progress --no-interaction
