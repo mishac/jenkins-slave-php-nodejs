@@ -24,6 +24,7 @@ RUN apt-get update -yqq \
     && apt-get install -yqqm \
     vim \
     locales \
+    libpng-dev \
     php7.0-fpm \
     php7.0-mysql \
     php7.0-gd \

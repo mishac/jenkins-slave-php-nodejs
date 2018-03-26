@@ -24,6 +24,7 @@ RUN apt-get update -yqq \
     && apt-get install -yqqm \
     vim \
     locales \
+    libpng-dev \
     php5.6-fpm \
     php5.6-mysql \
     php5.6-gd \
