@@ -63,7 +63,7 @@ RUN curl -sS https://deb.nodesource.com/setup_9.x | bash - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -yqq && apt-get install nodejs yarn -yqq
 
-RUN chown -R jenkins:jenkins /home/jenkins/.composer
+RUN chown -R jenkins:jenkins /home/jenkins
 
 RUN wget http://phpdox.de/releases/phpdox.phar \
     && chmod +x phpdox.phar \
