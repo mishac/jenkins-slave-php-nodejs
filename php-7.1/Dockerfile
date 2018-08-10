@@ -61,7 +61,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN curl -sS https://deb.nodesource.com/setup_10.x | bash - \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update -yqq && apt-get install nodejs yarn -yqq
+RUN apt-get update -yqq && apt-get install nodejs yarn rsync -yqq
 
 RUN chown -R jenkins:jenkins /home/jenkins
 
@@ -74,14 +74,6 @@ USER jenkins
 ENV PATH /home/jenkins/.composer/vendor/bin:$PATH
 
 RUN composer global require \
-    phpunit/phpunit \
-    phploc/phploc \
-    pdepend/pdepend \
-    phpmd/phpmd \
-    sebastian/phpcpd \
-    phing/phing \
-    jakub-onderka/php-parallel-lint \
-    drupal/coder \
     drush/drush \
     wp-cli/wp-cli \
     --no-progress --no-interaction \
